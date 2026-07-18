@@ -1,0 +1,12 @@
+[target.aarch64-unknown-linux-gnu]
+image = "ghcr.io/cross-rs/aarch64-unknown-linux-gnu:main"
+pre-build = [
+    "export DEBIAN_FRONTEND=noninteractive",
+    "dpkg --add-architecture arm64",
+    "apt-get update",
+    "apt-get install -y libclang-dev cmake",
+    "apt-get install -y libasound2-dev:arm64 libssl-dev:arm64",
+    "apt-get install -y libdbus-1-dev:arm64",
+    "apt-get install -y libpulse-dev:arm64",
+    "apt-get install -y portaudio19-dev:arm64",
+]
